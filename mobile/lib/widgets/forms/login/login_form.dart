@@ -15,6 +15,7 @@ import 'package:immich_mobile/entities/store.entity.dart';
 import 'package:immich_mobile/extensions/build_context_extensions.dart';
 import 'package:immich_mobile/generated/translations.g.dart';
 import 'package:immich_mobile/infrastructure/repositories/settings.repository.dart';
+import 'package:immich_mobile/models/server_info/server_info.model.dart';
 import 'package:immich_mobile/providers/auth.provider.dart';
 import 'package:immich_mobile/providers/background_sync.provider.dart';
 import 'package:immich_mobile/providers/feature_message.provider.dart';
@@ -80,6 +81,10 @@ class LoginForm extends HookConsumerWidget {
     Future<void> checkVersionMismatch() async {
       try {
         final packageInfo = await PackageInfo.fromPlatform();
+        if (serverInfo.versionStatus == VersionStatus.error) {
+          warningMessage.value = serverInfo.versionStatus.message;
+          return;
+        }
         final appSemVer = SemVer.fromString(packageInfo.version);
         final serverSemVer = serverInfo.serverVersion;
         warningMessage.value = getVersionCompatibilityMessage(serverVersion: serverSemVer, appVersion: appSemVer);
