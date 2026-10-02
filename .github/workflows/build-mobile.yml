@@ -1,6 +1,7 @@
 name: Build Mobile
 
 on:
+  workflow_dispatch:
   workflow_call:
     inputs:
       ref:
