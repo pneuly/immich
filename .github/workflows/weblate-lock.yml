@@ -2,7 +2,7 @@ name: Weblate checks
 
 on:
   pull_request:
-    branches: [main, 'release/*']
+    branches: ['release/*']
     types:
       - opened
       - synchronize

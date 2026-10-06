@@ -3,7 +3,7 @@ name: Migration Order
 on:
   pull_request:
   push:
-    branches: [main, 'release/*']
+    branches: ['release/*']
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}

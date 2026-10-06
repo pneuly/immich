@@ -1,7 +1,7 @@
 name: CLI Build
 on:
   push:
-    branches: [main, 'release/*']
+    branches: ['release/*']
     paths:
       - 'packages/cli/**'
       - '.github/workflows/cli.yml'
